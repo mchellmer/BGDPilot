@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test1</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h1>Bangladesh Arsenic Risk Calculator</h1>
+<ul id='HeaderLine'>
+  <li><%= link_to "Calculator", calculator_path%></li>
+  <li><%= link_to "About",about_path%></li>
+  <li><%= link_to "Researchers",researchers_path%></li>
+</ul>
+
+<%= yield %>
+
+<ul id='acknowledgements'>
+  <li>Imperial College London</li>
+  <li>Developer: Mark Hellmer</li>
+  <li>Powered by: Ruby on Rails</li>
+</ul>
+
+</body>
+</html>

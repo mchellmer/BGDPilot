@@ -1,0 +1,62 @@
+
+<div id='title'><strong>Calculator</strong></div>
+
+<div id='request form'>
+  <%= form_for(Request.new) do |f| %>
+    <div class='form'>
+      <%= f.label :location%>
+      <%= f.select(:location, ['High Arsenic Area',
+                              'Moderate Arsenic Area',
+                              'Low Arsenic Area'])
+      %>
+    </div>
+  
+    <div class='form'>
+      <%= f.label :depth%>
+      <%= f.text_field :depth %>
+    </div>
+    
+    <div class='form'>
+      <%= f.label :color%>
+      <%= f.select(:color,        ['Red',
+                                  'Grey',
+                                  'Blue'])%>
+    </div>
+  
+    <div id='submit'>
+      <%= f.submit 'Calculate Risk' %>
+    </div>
+  <% end %>
+</div>
+
+<!--
+<div id='request form'>
+  <%= form_tag("/requests", method: 'post') do %>
+    <div class='form'>
+    <%= label_tag(:location, 'Select Location:')%>
+    <%= select_tag 'location', options_for_select(
+                                  ['High Arsenic Area',
+                                  'Moderate Arsenic Area',
+                                  'Low Arsenic Area'],0)%><br>
+    </div>
+  
+    <div class='form'>
+    <%= label_tag(:depth, 'Depth:')%>
+    <%= text_field_tag(:depth,nil,placeholder:'Depth in Meters') %><br>
+    </div>
+    
+    <div class='form'>
+    <%= label_tag(:color, 'Select color of well:')%>
+    <%= select_tag 'color', options_for_select(
+                                  ['Red',
+                                  'Grey',
+                                  'Blue'],'Grey')%><br>
+    </div>
+  
+    <div id='submit'>
+      <%= submit_tag('Calculate Risk') %>
+    </div>
+  <%end%>
+</div>
+-->
+

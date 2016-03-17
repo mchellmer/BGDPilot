@@ -1,0 +1,17 @@
+<table style="width:75%">
+  <tr>
+    <th>ID</td>
+    <th>Location</td>
+    <th>Depth [m]</td>
+    <th>Well Color</td>
+  </tr>
+  
+  <% @requests.each do |request| %>
+  <tr>
+    <td><%= request.id %></td>
+    <td><%= request.location %></td>
+    <td><%= request.depth %></td>
+    <td><%= request.color %></td>
+  </tr>
+  <% end %>
+</table>
