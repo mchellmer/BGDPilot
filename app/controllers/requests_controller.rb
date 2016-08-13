@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
   
   def create
     @request = Request.new(request_params)
+    
     if @request.save
       redirect_to @request
     else
@@ -32,6 +33,7 @@ class RequestsController < ApplicationController
   
   private
   def request_params
-    params.require(:request).permit(:location, :depth, :color)
+    params.require(:request).permit(:union, :mouza, :village, :depth, :color)
   end
+  
 end

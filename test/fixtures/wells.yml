@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  union: MyString
+  Mouza: MyString
+  Village: MyString
+  Depth: 1
+  Wells: 1
+  MeanAs: 1.5
+  StDevAs: 1.5
+
+two:
+  union: MyString
+  Mouza: MyString
+  Village: MyString
+  Depth: 1
+  Wells: 1
+  MeanAs: 1.5
+  StDevAs: 1.5

@@ -1,18 +1,50 @@
 <table style="width:75%">
   <tr>
-    <td>ID</td>
-    <td>Location</td>
+    <td>Village</td>
     <td>Depth [m]</td>
     <td>Well Color</td>
   </tr>
   <tr>
-    <td><%= @request.id %></td>
-    <td><%= @request.location %></td>
+    <td><%= @request.village %></td>
     <td><%= @request.depth %></td>
     <td><%= @request.color %></td>
   </tr>
+  
 </table>
+<% well = Well.find_by(union: @request['union'],
+                     mouza: @request['mouza'],
+                     village: @request['village'],
+                     depth: @request['depth']) %>
 
-<p> Here will be an evaluation of the risk based on the entry. E.g. if a high arsenic zone was selected, and the color of the well were red, then there is a 'High Risk' of Arsenic poisoning to those using the well.</p>
+    <p>Wells sampled at this depth: <%= well['Wells'] %></p>
+    <p>Mean Arsenic Concentration: <%= well['MeanAs'].round(2) %> ppb</p>
+    <p>Standard Deviation of measurements: <%= well['StDevAs'].round(2) %></p>
+    
+    <% if well['MeanAs'] > 50
+         risk = 'above'
+        else
+         risk = 'below'
+        end
+        
+        if well['Wells'] < 5
+          confidence = 'low'
+        else
+          confidence = 'high'
+        end
+    %>
 
-<p> Once the database is connected, the form entries will be used to query and allocate the risk</p>
+
+<p> The arsenic concentration of this well is <%= risk %> the national recommended safe level for human consumption [50 ppb].
+</p>
+
+<p>
+  <%= if confidence == 'low'
+      "This assessment is based on less than five wells for this depth. It is suggested to have more wells tested in this village to increase the accuracy of this assessment."
+      end%>
+</p>
+
+<p>
+  <%= if @request.color == 'Red'
+    "Regardless of recorded values for arsenic concentration at this well horizon, the color of  this well (red) indicates an elevated risk to arsenic contamination. It is suggested to have this well tested regularly to ensure safe consumption."
+      end%>
+</p>
