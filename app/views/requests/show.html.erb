@@ -12,9 +12,9 @@
   
 </table>
 <% well = Well.find_by(union: @request['union'],
-                     mouza: @request['mouza'],
-                     village: @request['village'],
-                     depth: @request['depth']) %>
+                     Mouza: @request['mouza'],
+                     Village: @request['village'],
+                     Depth: @request['depth']) %>
 
     <p>Wells sampled at this depth: <%= well['Wells'] %></p>
     <p>Mean Arsenic Concentration: <%= well['MeanAs'].round(2) %> ppb</p>
